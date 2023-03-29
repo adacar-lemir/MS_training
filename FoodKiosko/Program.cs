@@ -1,4 +1,4 @@
-// dotnet new web - o FoodKiosko - f net6.0
+// dotnet new web -o FoodKiosko -f net6.0
 
 using FoodKiosko;
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
