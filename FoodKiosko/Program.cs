@@ -1,6 +1,6 @@
 // dotnet new web -o FoodKiosko -f net6.0
 
-using FoodKiosko;
+using FoodKiosko.DB;
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,12 +17,12 @@ var app = builder.Build();
 
 app.UseCors("some unique string");
 
-app.MapGet("/", () => "Hello World!");
-app.MapGet("/food", () => "all food data"); // data
-app.MapGet("/food/{id}", (int id) => $"food {id} data"); // data.SingleOrDefault(food => food.Id == id));
-app.MapPost("/food", (Food food) => $"created food {food.Id} data");
-app.MapPut("/food/{id}", (int id) => $"updated food {id} data");
-app.MapDelete("/food/{id}", (int id) => $"deleted food {id} data");
+app.MapGet("/", () => "Welcoming to FoodKiosko!");
+app.MapGet("/food", () => FoodDB.GetFood());
+app.MapGet("/food/{id}", (int id) => FoodDB.GetFood(id)); // data.SingleOrDefault(food => food.Id == id));
+app.MapPost("/food", (Food food) => FoodDB.CreateFood(food));
+app.MapPut("/food/{id}", (Food food) => FoodDB.UpdateFood(food));
+app.MapDelete("/food/{id}", (int id) => FoodDB.RemoveFood(id));
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
