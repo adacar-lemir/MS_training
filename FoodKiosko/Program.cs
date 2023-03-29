@@ -1,3 +1,5 @@
+// dotnet new web - o FoodKiosko - f net6.0
+
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
 
 var builder = WebApplication.CreateBuilder(args);
