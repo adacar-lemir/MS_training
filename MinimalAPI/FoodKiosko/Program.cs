@@ -1,15 +1,23 @@
 // dotnet new web -o FoodKiosko -f net6.0
 
+// dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 6.0
+// dotnet tool install --global dotnet-ef
+// dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0
+// after AddSqlite is added:
+// dotnet ef migrations add InitialCreate
+// dotnet ef database update
+
 using FoodKiosko.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Foods") ?? "Data Source=Food.db";
 
 builder.Services.AddCors(options => { });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<FoodDb>(options => options.UseInMemoryDatabase("items"));
+builder.Services.AddSqlite<FoodDb>(connectionString);
 builder.Services.AddSwaggerGen(c => 
 { 
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodKiosko", Description = "A Kiosko of food", Version = "v1" });
