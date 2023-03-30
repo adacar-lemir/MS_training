@@ -1,6 +1,7 @@
 // dotnet new web -o FoodKiosko -f net6.0
 
-using FoodKiosko.DB;
+using FoodKiosko.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options => { });
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<FoodDb>(options => options.UseInMemoryDatabase("items"));
 builder.Services.AddSwaggerGen(c => 
 { 
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodKiosko", Description = "A Kiosko of food", Version = "v1" });
@@ -18,11 +20,7 @@ var app = builder.Build();
 app.UseCors("some unique string");
 
 app.MapGet("/", () => "Welcoming to FoodKiosko!");
-app.MapGet("/food", () => FoodDB.GetFood());
-app.MapGet("/food/{id}", (int id) => FoodDB.GetFood(id)); // data.SingleOrDefault(food => food.Id == id));
-app.MapPost("/food", (Food food) => FoodDB.CreateFood(food));
-app.MapPut("/food/{id}", (Food food) => FoodDB.UpdateFood(food));
-app.MapDelete("/food/{id}", (int id) => FoodDB.RemoveFood(id));
+app.MapGet("/foods", async (FoodDb db) => await db.Foods.ToListAsync());
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
