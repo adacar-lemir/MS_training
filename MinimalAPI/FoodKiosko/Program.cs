@@ -6,6 +6,9 @@
 // after AddSqlite is added:
 // dotnet ef migrations add InitialCreate
 // dotnet ef database update
+//
+// after node.js and yarn are added
+// npx create-react-app food_kiosko-web
 
 using FoodKiosko.Models;
 using Microsoft.EntityFrameworkCore;
