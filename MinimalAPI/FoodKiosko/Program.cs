@@ -11,10 +11,18 @@ using FoodKiosko.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models; // dotnet add package Swashbuckle.AspNetCore --version 6.1.4
 
+const string MyAllowsSpecificOrigins = "_myAllowSpecificOrigin";
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Foods") ?? "Data Source=Food.db";
 
-builder.Services.AddCors(options => { });
+builder.Services.AddCors(options => {
+	options.AddPolicy(name: MyAllowsSpecificOrigins,
+		builder =>
+		{
+			builder.WithOrigins("*");
+		});
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSqlite<FoodDb>(connectionString);
@@ -25,7 +33,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-app.UseCors("some unique string");
+app.UseCors(MyAllowsSpecificOrigins);
 
 app.MapGet("/foods", async (FoodDb db) => await db.Foods.ToListAsync());
 app.MapGet("/food/{id}", async (FoodDb db, int id) => await db.Foods.FindAsync(id));
