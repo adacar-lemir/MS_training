@@ -1,0 +1,14 @@
+{
+	"foods": [
+		{
+			"id": 1,
+			"name": "SpaguItaly dummy",
+			"description": "Italian fideos dummy"
+		},
+		{
+			"id": 2,
+			"name": "Jamburguer dummy",
+			"description": "Sweet meat dummy"
+		}
+	]
+}

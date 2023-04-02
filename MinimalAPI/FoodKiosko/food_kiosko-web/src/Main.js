@@ -4,8 +4,7 @@
 // create this file
 // yarn add styled-components
 
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FoodFrame = styled.div`
@@ -37,14 +36,6 @@ const Save = styled.button`
    border-radius: 5px;
 `;
 
-let foods = [{
-		id: 1, name: 'SpagguItaly', description: 'Italian fideos'
-	},
-	{
-		id: 2, name: 'Jamburger', description: 'Sweet meat with breads'
-	}
-];
-
 const Food = ({ food }) => {
 	const [data, setData] = useState(food);
 	const [dirty, setDirty] = useState(false);
@@ -74,11 +65,28 @@ const Food = ({ food }) => {
 	</React.Fragment>);
 }
 
+// mock server: 
+// npx json-server --watch --port 5000 db.json
+
 const Main = () => {
+	const [foods, setFoods] = useState([]);
+	useEffect(() => {
+		fetchData();
+	}, [])
+
+	function fetchData() {
+		fetch("/foods")
+			.then(response => response.json())
+			.then(data => setFoods(data))
+	}
+
 	const data = foods.map(food => <Food food={food} />)
 
 	return (<React.Fragment>
-		{data}
+		{foods.lentgh === 0 ?
+			<div>No foods</div> :
+			<div>{data}</div>
+		}
 	</React.Fragment>)
 }
 
