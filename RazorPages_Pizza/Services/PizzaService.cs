@@ -36,7 +36,7 @@ public static class PizzaService
 
     public static void Update(Pizza pizza)
     {
-        var index = Pizzas.FindIndex(p => p.IsGlutenFree == pizza.Id);
+        var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
         if (index == -1)
             return;
         

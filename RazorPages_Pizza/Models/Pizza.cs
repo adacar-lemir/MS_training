@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnorarions;
+using System.ComponentModel.DataAnnotations;
 
 namespace RazorPages_Pizza.Models;
 
