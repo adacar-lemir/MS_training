@@ -1,4 +1,5 @@
-// dotnet new webapi -f net6.0 
+// dotnet new webapi -f net6.0
+// dotnet tool install -g Microsoft.dotnet-httprepl
 
 var builder = WebApplication.CreateBuilder(args);
 
