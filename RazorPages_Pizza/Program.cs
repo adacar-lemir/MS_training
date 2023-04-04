@@ -1,3 +1,5 @@
+// dotnet new webapp -f net6.0
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
