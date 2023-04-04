@@ -1,5 +1,9 @@
 // dotnet new webapi -f net6.0
+//
 // dotnet tool install -g Microsoft.dotnet-httprepl
+// httprepl https://localhost:{PORT}
+// connect https://localhost:{PORT}
+// dotnet dev-certs https --trust
 
 var builder = WebApplication.CreateBuilder(args);
 
