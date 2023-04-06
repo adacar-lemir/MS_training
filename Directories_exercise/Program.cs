@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 
-//var salesFiles = FindFiles($"mslearn-dotnet-files{Path.DirectorySeparatorChar}stores");
-var salesFiles = FindFiles(Path.Combine("mslearn-dotnet-files","stores"));
+var currentDirectory = Directory.GetCurrentDirectory();
+var storesDirectory = Path.Combine(currentDirectory, "mslearn-dotnet-files", "stores");
+var salesFiles = FindFiles(storesDirectory);
 
 foreach (var file in salesFiles)
 {
