@@ -22,5 +22,8 @@ static int Fibonacci(int n)
 
     // If n2 is 5 continue, else break.
     Debug.Assert(n2 == 5, "The return value is not 5 and it should be.");
+    // With: dotnet run --configuraion Release, all Debug statements are no 
+    // longer applied and therefore this Assert doesn't stop the program. 
+
     return n == 0 ? n1 : n2;
 }
