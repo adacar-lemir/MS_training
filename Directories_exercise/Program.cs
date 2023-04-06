@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 
-var salesFiles = FindFiles("mslearn-dotnet-files\\stores");
+var salesFiles = FindFiles($"mslearn-dotnet-files{Path.DirectorySeparatorChar}stores");
 
 foreach (var file in salesFiles)
 {
