@@ -1,0 +1,3 @@
+[submodule "Directories_exercise/mslearn-dotnet-files"]
+	path = Directories_exercise/mslearn-dotnet-files
+	url = https://github.com/MicrosoftDocs/mslearn-dotnet-files
