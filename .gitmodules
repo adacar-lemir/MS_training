@@ -1,3 +1,6 @@
 [submodule "Directories_exercise/mslearn-dotnet-files"]
 	path = Directories_exercise/mslearn-dotnet-files
 	url = https://github.com/MicrosoftDocs/mslearn-dotnet-files
+[submodule "EntityFrameworkCore/mslearn-persist-data-ef-core"]
+	path = EntityFrameworkCore/mslearn-persist-data-ef-core
+	url = https://github.com/MicrosoftDocs/mslearn-persist-data-ef-core
