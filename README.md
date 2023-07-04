@@ -1,2 +1,2 @@
 # MS_training
-Miscellaneous MS playground
+Misc MSLearn playground
